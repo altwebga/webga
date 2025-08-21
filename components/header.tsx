@@ -1,9 +1,11 @@
+import { Logo } from "./logo";
+import { AppNav } from "./app-nav";
 export function Header() {
   return (
-    <header className="bg-background/10 backdrop-blur-md">
+    <header className="bg-background/50 backdrop-blur-md shadow sticky top-0 left-0">
       <div className="h-16 px-4 container mx-auto flex flex-row gap-4 justify-between items-center">
-        <p>Logo</p>
-        <p>Menu</p>
+        <Logo />
+        <AppNav />
         <p>CallAction</p>
       </div>
     </header>

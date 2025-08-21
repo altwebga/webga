@@ -25,7 +25,7 @@ import {
 import { ContactForm } from "./contact-form";
 
 const textContainerSetting = {
-  textButton: "Отправить",
+  textButton: "Начать проект",
   title: "Заявка на проект",
   content:
     "Оставьте ваши контактные данные. Я свяжусь с вами в течении 15 минут.",
@@ -39,7 +39,7 @@ export function PopUpContainer() {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button>{textContainerSetting.textButton}</Button>
+          <Button size="lg">{textContainerSetting.textButton}</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -57,7 +57,7 @@ export function PopUpContainer() {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button>{textContainerSetting.textButton}</Button>
+        <Button size={"lg"}>{textContainerSetting.textButton}</Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
