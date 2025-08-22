@@ -1,6 +1,11 @@
+import Link from "next/link";
+
 export function Logo() {
   return (
-    <div className="flex flex-row gap-2 items-center justify-center">
+    <Link
+      href={"/"}
+      className="flex flex-row gap-2 items-center justify-center"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 225 169"
@@ -12,7 +17,7 @@ export function Logo() {
         </g>
       </svg>
 
-      <p className="p-0 m-0">webga</p>
-    </div>
+      <p className="p-0 m-0 hidden md:block">webga</p>
+    </Link>
   );
 }
