@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { MagicCard } from "../ui/magic-card";
 import { DirectusImage } from "../shared/directus-image";
 import Link from "next/link";
+import { Container } from "../container/container";
 
 const text = {
   subTitle: "Наши услуги",
@@ -27,54 +28,52 @@ export async function OurServices() {
   const services = await getServices();
 
   return (
-    <section className="my-48">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col gap-4 md:flex-row items-start">
-          <div className="md:w-1/4">
-            <p className="text-xl text-muted-foreground">{text.subTitle}</p>
-          </div>
-          <div className="md:w-3/4">
-            <TextAnimate
-              animation="blurIn"
-              as="h2"
-              className="text-4xl md:text-6xl leading-10 md:leading-14"
-            >
-              {text.title}
-            </TextAnimate>
+    <Container className="my-32">
+      <div className="flex flex-col gap-4 md:flex-row items-start">
+        <div className="md:w-1/4">
+          <p className="text-xl text-muted-foreground">{text.subTitle}</p>
+        </div>
+        <div className="md:w-3/4">
+          <TextAnimate
+            animation="blurIn"
+            as="h2"
+            className="text-4xl md:text-6xl leading-10 md:leading-14"
+          >
+            {text.title}
+          </TextAnimate>
 
-            <p className="max-w-4xl">{text.description}</p>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-8">
-          {services.slice(0, 4).map((service) => (
-            <Link
-              key={service.id}
-              href={`/services/${service.slug}`}
-              className="transition delay-50 duration-150 hover:translate-2"
-            >
-              <MagicCard className="p-4 rounded-md shadow-md min-h-full">
-                <DirectusImage
-                  url={service.cover_image || "/img/no-image.png"}
-                  alt={service.title}
-                  width={600}
-                  height={600}
-                />
-                <div className="px-4">
-                  <h3>{service.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-5">
-                    {service.short_content || ""}
-                  </p>
-                </div>
-              </MagicCard>
-            </Link>
-          ))}
-        </div>
-        <div className="flex justify-end">
-          <Button asChild size={"lg"} className="min-w-52">
-            <Link href={"/servises"}>Все услуги</Link>
-          </Button>
+          <p className="max-w-4xl">{text.description}</p>
         </div>
       </div>
-    </section>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-8">
+        {services.slice(0, 4).map((service) => (
+          <Link
+            key={service.id}
+            href={`/services/${service.slug}`}
+            className="transition delay-50 duration-150 hover:translate-2"
+          >
+            <MagicCard className="p-4 rounded-md shadow-md min-h-full">
+              <DirectusImage
+                url={service.cover_image || "/img/no-image.png"}
+                alt={service.title}
+                width={600}
+                height={600}
+              />
+              <div className="px-4">
+                <h3>{service.title}</h3>
+                <p className="text-sm text-muted-foreground leading-5">
+                  {service.short_content || ""}
+                </p>
+              </div>
+            </MagicCard>
+          </Link>
+        ))}
+      </div>
+      <div className="flex justify-end">
+        <Button asChild size={"lg"} className="min-w-52">
+          <Link href={"/services"}>Все услуги</Link>
+        </Button>
+      </div>
+    </Container>
   );
 }

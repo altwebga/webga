@@ -44,6 +44,25 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
 }
 
 :root {
@@ -125,112 +144,57 @@
   * {
     @apply border-border outline-ring/50;
   }
-
   body {
     @apply bg-background text-foreground;
   }
-
-  /* -----------------------------
-     Headings
-  ------------------------------*/
-
   h1 {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-2;
   }
-
   h2 {
-    @apply scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0;
+    @apply scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0 mb-2;
   }
-
-  h3 {
-    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+  h3,
+  label {
+    @apply scroll-m-20 text-2xl mt-4 font-semibold tracking-tight mb-2;
   }
-
   h4 {
-    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+    @apply scroll-m-20 text-xl font-semibold tracking-tight mb-2;
   }
-
-  /* -----------------------------
-     Paragraphs & text
-  ------------------------------*/
-
   p {
-    @apply leading-7 [&:not(:first-child)]:mt-6;
+    @apply text-lg mb-4;
   }
-
-  .lead {
-    @apply text-xl text-muted-foreground;
+  a {
+    @apply font-medium decoration-primary decoration-2;
   }
-
-  .large {
-    @apply text-lg font-semibold;
-  }
-
-  .small {
-    @apply text-sm font-medium leading-none;
-  }
-
-  .muted {
-    @apply text-sm text-muted-foreground;
-  }
-
-  /* -----------------------------
-     Blockquote
-  ------------------------------*/
-
   blockquote {
-    @apply mt-6 border-l-2 pl-6 italic text-muted-foreground;
+    @apply mt-6 border-l-2 pl-6 italic;
   }
-
-  /* -----------------------------
-     Lists
-  ------------------------------*/
-
-  ul {
-    @apply my-6 ml-6 list-disc [&>li]:mt-2;
-  }
-
-  ol {
-    @apply my-6 ml-6 list-decimal [&>li]:mt-2;
-  }
-
-  /* -----------------------------
-     Inline code
-  ------------------------------*/
-
+  pre,
   code {
-    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+    @apply my-4;
   }
-
-  pre {
-    @apply mb-4 mt-6 overflow-x-auto rounded-lg bg-muted p-4 text-sm;
+  ul {
+    @apply list-disc pl-4 my-2;
   }
-
-  pre code {
-    @apply bg-transparent p-0;
+  ol {
+    @apply list-decimal pl-4 my-2;
   }
-
-  /* -----------------------------
-     Tables
-  ------------------------------*/
-
   table {
-    @apply w-full border-collapse border border-border;
+    @apply block w-max max-w-full overflow-x-auto border-collapse text-sm border my-8;
   }
-
-  thead tr {
-    @apply border-b;
+  thead,
+  tbody,
+  tfoot {
+    @apply w-max;
   }
 
   th {
-    @apply border px-4 py-2 text-left font-medium;
+    @apply px-4 py-2 border text-left font-semibold whitespace-nowrap;
   }
-
   td {
-    @apply border px-4 py-2 align-middle;
+    @apply px-4 py-2 border align-middle whitespace-nowrap;
   }
-
-  tbody tr {
-    @apply transition-colors hover:bg-muted/50;
+  tfoot td {
+    @apply font-medium;
   }
 }

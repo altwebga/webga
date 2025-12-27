@@ -1,39 +1,74 @@
+import { Marquee } from "../ui/marquee";
+import { Container } from "../container/container";
 import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
 import { DirectusImage } from "../shared/directus-image";
+import { Card } from "../ui/card";
 
-async function getClients() {
+type Customer = {
+  id: string | number;
+  title: string;
+  content: string;
+  cover_image: string;
+};
+
+async function getClients(): Promise<Customer[]> {
   return directus.request(
     readItems("customers", {
-      fields: ["title", "id", "cover_image"],
+      fields: ["id", "title", "content", "cover_image"],
     })
   );
 }
 
 export async function OurClients() {
   const customers = await getClients();
+  if (!customers?.length) return null;
+
+  const mid = Math.ceil(customers.length / 2);
+  const firstRow = customers.slice(0, mid);
+  const secondRow = customers.slice(mid);
+
   return (
-    <section className="mt-32">
-      <div className="container mx-auto px-4">
-        <h2 className="text-center text-xl">Среди наших клиентов</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between gap-4 mt-8">
-          {customers.splice(0, 4).map((customer) => (
-            <div
-              key={customer.id}
-              className="flex flex-row gap-2 h-14 items-center"
-            >
-              <DirectusImage
-                url={customer.cover_image}
-                alt={customer.title}
-                width={80}
-                height={80}
-                className="rounded-full border w-14 h-14"
-              />
-              <p className="text-xl uppercase m-0">{customer.title}</p>
-            </div>
-          ))}
+    <Container className="relative flex w-full flex-col items-center justify-center overflow-hidden my-32">
+      <h2>Среди наших клиентов</h2>
+
+      <Marquee pauseOnHover className="[--duration:50s]">
+        {firstRow.map((customer) => (
+          <CustomerCard key={customer.id} customer={customer} />
+        ))}
+      </Marquee>
+
+      <Marquee reverse pauseOnHover className="[--duration:50s]">
+        {secondRow.map((customer) => (
+          <CustomerCard key={customer.id} customer={customer} />
+        ))}
+      </Marquee>
+
+      <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r" />
+      <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l" />
+    </Container>
+  );
+}
+
+function CustomerCard({ customer }: { customer: Customer }) {
+  return (
+    <Card className="pointer-events-none px-4 py-3">
+      <div className="flex items-center gap-3">
+        <DirectusImage
+          url={customer.cover_image}
+          alt={customer.title}
+          width={48}
+          height={48}
+          className="rounded-full"
+        />
+
+        <div>
+          <h3 className="text-base font-medium m-0">{customer.title}</h3>
+          <p className="text-sm text-muted-foreground m-0">
+            {customer.content}
+          </p>
         </div>
       </div>
-    </section>
+    </Card>
   );
 }
