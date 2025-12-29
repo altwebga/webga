@@ -22,7 +22,11 @@ const token = process.env.TOKEN ?? "";
 
 const directus = createDirectus<Schema>(directusUrl)
   .with(authentication())
-  .with(rest());
+  .with(
+    rest({
+      onRequest: (options) => ({ ...options, revalidate: 86400 }),
+    })
+  );
 
 if (token) {
   await directus.setToken(token);

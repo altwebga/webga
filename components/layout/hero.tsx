@@ -1,7 +1,6 @@
 import { Button } from "../ui/button";
 import { socialLinks } from "@/config/social-links";
 import { ArrowDown } from "lucide-react";
-import { ShinyButton } from "../ui/shiny-button";
 
 const text = {
   title: "Разработка и продвижение сайтов",
