@@ -30,10 +30,10 @@ export async function OurServices() {
   return (
     <Container className="my-32">
       <div className="flex flex-col gap-4 md:flex-row items-start">
-        <div className="md:w-1/4">
+        <div className="md:w-1/3">
           <p className="text-xl text-muted-foreground">{text.subTitle}</p>
         </div>
-        <div className="md:w-3/4">
+        <div className="md:w-2/3">
           <TextAnimate
             animation="blurIn"
             as="h2"

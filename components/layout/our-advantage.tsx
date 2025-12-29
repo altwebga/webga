@@ -3,7 +3,7 @@ import { TextAnimate } from "../ui/text-animate";
 import { Button } from "../ui/button";
 
 const text = {
-  title: "Мы точно знаем, что нужно делать, и не ведем долгих переговоров",
+  title: "Мы точно знаем, что нужно делать, и не ведем долгих переговоров.",
   subTitle: "Наши преимущества",
   description:
     "Мы общаемся простым и понятным языком — без лишних терминов. Подробно рассказываем обо всех этапах работы и держим в курсе процесса. Мы не требуем ТЗ или бриф: все необходимые вопросы задаём по телефону или на встрече. Тексты для сайта пишем самостоятельно — вам не нужно ничего готовить. Если собственных фотографий пока нет, мы подбираем подходящую замену.",
@@ -12,7 +12,7 @@ const text = {
 export function OurAvantage() {
   return (
     <Container className="my-32">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 md:ml-40">
         <div>
           <p className="text-xl text-muted-foreground">{text.subTitle}</p>
         </div>

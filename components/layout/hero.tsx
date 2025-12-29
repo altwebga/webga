@@ -1,6 +1,14 @@
 import { Button } from "../ui/button";
 import { socialLinks } from "@/config/social-links";
 import { ArrowDown } from "lucide-react";
+import { ShinyButton } from "../ui/shiny-button";
+
+const text = {
+  title: "Разработка и продвижение сайтов",
+  city: "в Горно-Алтайске",
+  content:
+    "Создаем эффективные сайты, запускаем SEO и рекламу, настраиваем аналитику и помогаем бизнесу расти. Работаем на результат — если не понравится, вернем деньги.",
+};
 
 export function Hero() {
   return (
@@ -16,19 +24,15 @@ export function Hero() {
       <div className="relative container mx-auto flex h-full flex-col justify-between px-4">
         <div className="mt-80 flex max-w-5xl flex-col space-y-8 md:ml-54">
           <h1 className="flex flex-col font-extrabold text-2xl md:text-5xl">
-            Разработка и продвижение сайтов
-            <span className="text-4xl md:text-8xl"> в Горно-Алтайске</span>
+            {text.title}
+            <span className="text-4xl md:text-8xl"> {text.city}</span>
           </h1>
 
-          <p className="max-w-2xl">
-            Создаем эффективные сайты, запускаем SEO и рекламу, настраиваем
-            аналитику и помогаем бизнесу расти. Работаем на результат — если не
-            понравится, вернем деньги.
-          </p>
+          <p className="max-w-2xl">{text.content}</p>
 
           <div className="flex flex-wrap gap-3">
             <Button size="lg">Начать проект</Button>
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant={"outline"}>
               Примеры работ
             </Button>
           </div>

@@ -3,7 +3,7 @@ import { Card } from "../ui/card";
 
 export function CallAction() {
   return (
-    <Container>
+    <Container className="my-4">
       <Card></Card>
     </Container>
   );
