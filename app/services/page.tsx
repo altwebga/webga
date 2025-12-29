@@ -31,7 +31,7 @@ export default async function ServicesPage() {
           {services.map((service) => (
             <CarouselItem
               key={service.id}
-              className="pl-1 md:basis-1/3 lg:basis-1/4 transition delay-50 duration-150 hover:translate-2"
+              className="pl-1 md:basis-1/3 lg:basis-1/4 transition delay-50 duration-150 hover:-translate-2"
             >
               <Link href={`/services/${service.slug}`}>
                 <MagicCard className="p-4 rounded-md shadow-md min-h-full">

@@ -50,7 +50,7 @@ export async function OurServices() {
           <Link
             key={service.id}
             href={`/services/${service.slug}`}
-            className="transition delay-50 duration-150 hover:translate-2"
+            className="transition delay-50 duration-150 hover:-translate-2"
           >
             <MagicCard className="p-4 rounded-md shadow-md min-h-full">
               <DirectusImage
