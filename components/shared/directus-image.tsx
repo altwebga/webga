@@ -24,6 +24,7 @@ export function DirectusImage({
       width={width}
       height={height}
       className={className}
+      loading="lazy"
     />
   );
 }

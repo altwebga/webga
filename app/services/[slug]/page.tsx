@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getServiceBySlug } from "@/actions/get-content";
 import { Markdown } from "@/components/shared/markdown";
+import { DirectusImage } from "@/components/shared/directus-image";
 
 export async function generateMetadata(
   props: PageProps<"/services/[slug]">
@@ -36,9 +37,23 @@ export default async function ServicePage(
   if (!service) notFound();
 
   return (
-    <article>
-      <h1>{service.title}</h1>
-      <Markdown markdown={service.content || ""} />
+    <article className="mt-20">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="md:w-2/3">
+            <h1>{service.title}</h1>
+            <Markdown markdown={service.content || ""} />
+          </div>
+          <aside className="md:w-1/3 md:border-l">
+            <DirectusImage
+              url={service.cover_image || ""}
+              alt={service.title}
+              width={600}
+              height={600}
+            />
+          </aside>
+        </div>
+      </div>
     </article>
   );
 }

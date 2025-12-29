@@ -4,6 +4,13 @@ import { DirectusImage } from "@/components/shared/directus-image";
 import { MagicCard } from "@/components/ui/magic-card";
 import { TextAnimate } from "@/components/ui/text-animate";
 import Link from "next/link";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const text = {
   title: "Наши услуги",
@@ -19,15 +26,14 @@ export default async function ServicesPage() {
       <TextAnimate animation="blurIn" as="p">
         {text.subTitle}
       </TextAnimate>
-      <div>
-        <ul className="list-none grid grid-cols-1 md:grid-cols-4 gap-4">
+      <Carousel className="w-full">
+        <CarouselContent className="p-4">
           {services.map((service) => (
-            <Link
+            <CarouselItem
               key={service.id}
-              href={`/services/${service.slug}`}
-              className="transition delay-50 duration-150 hover:translate-2"
+              className="pl-1 md:basis-1/3 lg:basis-1/4 transition delay-50 duration-150 hover:translate-2"
             >
-              <li>
+              <Link href={`/services/${service.slug}`}>
                 <MagicCard className="p-4 rounded-md shadow-md min-h-full">
                   <DirectusImage
                     url={service.cover_image || "/img/no-image.png"}
@@ -42,11 +48,13 @@ export default async function ServicesPage() {
                     </p>
                   </div>
                 </MagicCard>
-              </li>
-            </Link>
+              </Link>
+            </CarouselItem>
           ))}
-        </ul>
-      </div>
+        </CarouselContent>
+        <CarouselPrevious className="absolute left-0" />
+        <CarouselNext className="absolute right-0" />
+      </Carousel>
     </Container>
   );
 }
