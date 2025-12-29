@@ -40,6 +40,7 @@ export default async function ServicesPage() {
                     alt={service.title}
                     width={600}
                     height={600}
+                    loading="lazy"
                   />
                   <div className="px-4">
                     <h3>{service.title}</h3>

@@ -6,12 +6,14 @@ type DirectusImageProps = {
   width?: number;
   height?: number;
   className?: string;
+  loading?: "lazy" | "eager";
 };
 
 const assets = process.env.ASSETS || "https://api.seomix.ru/assets";
 
 export function DirectusImage({
   url,
+  loading = "lazy",
   alt = "",
   width = 300,
   height = 300,
@@ -24,7 +26,7 @@ export function DirectusImage({
       width={width}
       height={height}
       className={className}
-      loading="lazy"
+      loading={loading}
     />
   );
 }
