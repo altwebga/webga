@@ -9,7 +9,7 @@ export function DesktopNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="hidden md:block">
+    <nav>
       <ul className="flex flex-row gap-12 list-none">
         {menuLinks.map((item) => {
           const isActive = pathname === item.href;

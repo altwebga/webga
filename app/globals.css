@@ -198,4 +198,7 @@
   tfoot td {
     @apply font-medium;
   }
+  button {
+    cursor: pointer;
+  }
 }
