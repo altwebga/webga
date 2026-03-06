@@ -1,61 +1,32 @@
-import { Button } from "../ui/button";
-import { socialLinks } from "@/config/social-links";
-import { ArrowDown } from "lucide-react";
+import Image from "next/image";
 
-const text = {
+const content = {
   title: "Разработка и продвижение сайтов",
-  city: "в Горно-Алтайске",
-  content:
-    "Создаем эффективные сайты, запускаем SEO и рекламу, настраиваем аналитику и помогаем бизнесу расти. Работаем на результат — если не понравится, вернем деньги.",
+  inCity: "в Горно-Алтайске",
+  description:
+    "Создаем сайты, которые продают. От лендингов до интернет-магазинов. Продвигаем в Яндекс и Google. Гарантия результата.",
 };
 
 export function Hero() {
   return (
-    <section
-      className="
-        relative h-screen overflow-hidden
-        bg-[url(/img/hero_bg.svg)] bg-cover bg-no-repeat bg-center
-        before:absolute before:inset-0 before:content-['']
-        before:bg-[radial-gradient(ellipse_90%_90%_at_0%_100%,#1291f34d_0%,#1291f33d_35%,transparent_70%)]
-      "
-    >
-      {/* контент всегда выше псевдо-элемента */}
-      <div className="relative container mx-auto flex h-full flex-col justify-between px-4">
-        <div className="mt-80 flex max-w-5xl flex-col space-y-8 md:ml-54">
-          <h1 className="flex flex-col font-extrabold text-2xl md:text-5xl">
-            {text.title}
-            <span className="text-4xl md:text-8xl"> {text.city}</span>
+    <section className="h-[calc(100vh-58px)]">
+      <div className="container mx-auto px-4 md:px-20 border-l border-r border-b border-dashed h-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-10">
+        <div className="md:w-1/2">
+          <h1 className="flex flex-col gap-2 text-3xl md:text-4xl ">
+            {content.title}
+            <span className="text-primary text-4xl md:text-7xl font-extrabold">
+              {content.inCity}
+            </span>
           </h1>
-
-          <p className="max-w-2xl">{text.content}</p>
-
-          <div className="flex flex-wrap gap-3">
-            <Button size="lg">Начать проект</Button>
-            <Button size="lg" variant={"outline"}>
-              Примеры работ
-            </Button>
-          </div>
+          <p className="text-muted-foreground mt-8">{content.description}</p>
         </div>
-
-        <div className="flex items-end justify-between pb-8">
-          <div className="grid grid-cols-3 gap-8">
-            {socialLinks.map((item) => (
-              <a
-                key={item.url}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="opacity-70 transition hover:opacity-100"
-              >
-                {item.title}
-              </a>
-            ))}
-          </div>
-
-          <div className="text-muted-foreground hidden md:flex flex-row gap-2 items-center">
-            <p>скрольте вниз</p>
-            <ArrowDown />
-          </div>
+        <div className="md:w-1/2 flex justify-end">
+          <Image
+            src={"/img/no-image.svg"}
+            alt="text"
+            width={600}
+            height={600}
+          />
         </div>
       </div>
     </section>

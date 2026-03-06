@@ -1,18 +1,15 @@
-import { CallAction } from "@/components/layout/call-action";
+import { CallToAction } from "@/components/layout/cta";
+import { Featured } from "@/components/layout/featured";
 import { Hero } from "@/components/layout/hero";
-import { OurAvantage } from "@/components/layout/our-advantage";
-import { OurClients } from "@/components/layout/our-clients";
-import { OurServices } from "@/components/layout/our-services";
+import { Steps } from "@/components/layout/steps";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div>
+    <>
       <Hero />
-
-      <OurServices />
-      <OurAvantage />
-      <OurClients />
-      <CallAction />
-    </div>
+      <Featured />
+      <Steps />
+      <CallToAction />
+    </>
   );
 }

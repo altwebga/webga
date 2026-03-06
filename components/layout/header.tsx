@@ -1,20 +1,12 @@
-"use client";
-import { DesktopNav } from "../shared/desktop-nav";
-import { Logo } from "../shared/logo";
-import { MobileNav } from "../shared/mobile-nav";
-import { AnimatedThemeToggler } from "../theme/theme-toggle";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { AnimatedThemeToggler } from "../ui/animated-theme-toggler";
 
 export function Header() {
-  const isMobile = useIsMobile();
   return (
-    <header className="h-16 bg-background/20 backdrop-blur-md border-b z-50 fixed w-full">
-      <div className="h-full container mx-auto px-4 flex flex-row justify-between items-center">
-        <Logo />
-        <div className="flex md:flex-row flex-row-reverse gap-4 lg:gap-80">
-          {isMobile ? <MobileNav /> : <DesktopNav />}
-          <AnimatedThemeToggler />
-        </div>
+    <header className="bg-background/80 backdrop-blur-md sticky top-0 z-50 border-b border-dashed">
+      <div className="container mx-auto h-14 px-4 flex items-center justify-between">
+        <p>Logo</p>
+        <p>Menu</p>
+        <AnimatedThemeToggler />
       </div>
     </header>
   );
