@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SectionContainer } from "../containers/section-container";
+import { Heading } from "../shared/heading";
 
 interface Step {
   number: number;
@@ -16,37 +17,37 @@ interface StepsProps {
 }
 
 const Steps = ({
-  title = "Launch with Assurance",
-  description = "Simplify your workflow with our tools that provide clear insights, minimizing the complexity of managing intricate deployment data.",
+  title = "Как мы работаем",
+  description = "Понятный процесс сотрудничества — от первой идеи до стабильной работы проекта",
   steps = [
     {
       number: 1,
-      title: "Monitor Deployments live",
+      title: "Договор",
       description:
-        "Track your deployments with clarity, seeing updates take place as they happen.",
-      imageSrc: "/img/no-image.svg",
+        "Обсуждаем ваши задачи и цели, предлагаем оптимальное решение и фиксируем все условия сотрудничества. Вы точно понимаете сроки, этапы и стоимость работ.",
+      imageSrc: "/img/contract.png",
     },
     {
       number: 2,
-      title: "Immediate Issue Detection",
+      title: "Реализация",
       description:
-        "Spot issues instantly and address them with precise metrics for optimized performance.",
-      imageSrc: "/img/no-image.svg",
+        "Наша команда приступает к работе: проектируем, разрабатываем и внедряем решение. Вы получаете регулярные обновления и полный контроль над процессом.",
+      imageSrc: "/img/release.png",
       showConnectors: true,
     },
     {
       number: 3,
-      title: "Revert to a Stable Version",
+      title: "Поддержка",
       description:
-        "With just a few actions, revert to a previous version and restore system health swiftly.",
-      imageSrc: "/img/no-image.svg",
+        "После запуска мы остаёмся на связи: обеспечиваем техническую поддержку, обновления и помогаем вашему проекту расти и развиваться.",
+      imageSrc: "/img/support.png",
     },
   ],
 }: StepsProps) => {
   return (
     <SectionContainer>
       <div className="mx-auto flex max-w-3xl flex-col justify-center gap-7 md:text-center">
-        <h2 className="text-2xl font-bold md:text-4xl">{title}</h2>
+        <Heading as="h2" title={title} className="text-center" />
         <p className="text-sm text-muted-foreground md:text-base">
           {description}
         </p>
@@ -88,7 +89,7 @@ function StepItem({
                   : "bg-primary"
             } opacity-70`}
           />
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-primary bg-secondary font-mono text-lg text-primary-foreground">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-primary  font-mono text-lg">
             {number}
           </span>
           <span
@@ -113,8 +114,8 @@ function StepItem({
         src={imageSrc}
         alt="Placeholder image"
         width={400}
-        height={225}
-        className="z-10 aspect-video w-full rounded-xl border object-cover min-[960px]:max-h-56 min-[960px]:w-auto"
+        height={400}
+        className="z-10 aspect-video w-full rounded-xl border object-contain min-[960px]:max-h-56 min-[960px]:w-auto bg-accent-foreground"
       />
     </div>
   );

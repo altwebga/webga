@@ -18,22 +18,25 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({
-  badgeText = "трасформация бизнеса",
-  title = "Разработка и продвижение сайтов в Горно-Алтайске",
+  badgeText = "автоматизация ващего бизнеса",
+  title = "Разработка и продвижение сайтов <br />в Горно-Алтайске",
   subtitle = "Мы создаем современные и эффективные сайты, которые помогут вашему бизнесу выделиться на рынке и привлечь больше клиентов.",
   button1Text = "Заказать",
   button1Link = "#",
   button2Text = "Подробнее",
   button2Link = "#",
-  imageSrc = "/img/no-image.svg",
+  imageSrc = "/img/hero_image.png",
   imageAlt = "Hero illustration",
 }) => {
   return (
-    <SectionContainer>
-      <div className="grid items-center gap-12 md:grid-cols-2">
+    <SectionContainer className="bg-[url('/img/hero_bg.svg')] bg-cover bg-center bg-no-repeat">
+      <div className="grid items-center gap-12 md:grid-cols-2 md:px-12">
         {/* Left Section */}
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <Badge variant="outline" className="group flex items-center gap-2">
+          <Badge
+            variant="outline"
+            className="group flex items-center gap-2 p-4"
+          >
             {badgeText}
             <Rocket className="size-4 transition-transform group-hover:translate-x-1" />
           </Badge>
@@ -64,13 +67,13 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Right Section */}
-        <div className="aspect-square w-full overflow-hidden rounded-lg border border-muted/20 shadow-lg">
+        <div className="aspect-square w-full overflow-hidden rounded-lg">
           <Image
             src={imageSrc}
             alt={imageAlt}
-            width={600}
-            height={600}
-            className="size-full object-cover transition-transform duration-300 hover:scale-105"
+            width={800}
+            height={800}
+            className="size-full object-contain"
           />
         </div>
       </div>

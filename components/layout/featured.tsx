@@ -1,8 +1,9 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Clock, Users, Calendar, type LucideIcon } from "lucide-react";
+import { Clock, RussianRuble, ThumbsUp, type LucideIcon } from "lucide-react";
 import { SectionContainer } from "../containers/section-container";
+import { Heading } from "../shared/heading";
 
 interface Stat {
   label: string;
@@ -18,27 +19,27 @@ export interface EnhancedStatSectionProps {
 }
 
 const defaultProps: EnhancedStatSectionProps = {
-  title: "Revolutionize Your Hiring Process",
+  title: "Наши преимущества",
   description:
-    "Our platform empowers you to streamline recruitment, saving time and resources while finding the best talent for your team.",
+    "Мы предлагаем полный спектр услуг по разработке и продвижению сайтов в Горно-Алтайске. Наша команда профессионалов готова помочь вашему бизнесу выделиться на рынке и привлечь больше клиентов.",
   stats: [
     {
-      label: "Reduce your time to hire by",
-      value: "4x",
-      description: "quicker",
+      label: "Опыт",
+      value: "> 12 лет",
+      description: "в веб-разработке",
       icon: Clock,
     },
     {
-      label: "Clients have seen a decrease of",
-      value: "50%",
-      description: "in time to hire",
-      icon: Users,
+      label: "Стоимость",
+      value: "-30%",
+      description: "ниже чем у конкурентов",
+      icon: RussianRuble,
     },
     {
-      label: "Average number of hires per",
-      value: "3",
-      description: "months",
-      icon: Calendar,
+      label: "Качество",
+      value: "100%",
+      description: "гарантия качества",
+      icon: ThumbsUp,
     },
   ],
 };
@@ -46,9 +47,7 @@ const defaultProps: EnhancedStatSectionProps = {
 function FeaturedPage({ title, description, stats }: EnhancedStatSectionProps) {
   return (
     <SectionContainer>
-      <h2 className="mb-8 text-center text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:mb-12 md:text-5xl lg:mb-16 lg:text-6xl">
-        {title}
-      </h2>
+      <Heading as="h2" title={title} className="text-center mb-8" />
       <p className="mx-auto mb-12 max-w-3xl text-center text-lg text-muted-foreground md:mb-16 lg:mb-20">
         {description}
       </p>
@@ -74,8 +73,6 @@ function FeaturedPage({ title, description, stats }: EnhancedStatSectionProps) {
   );
 }
 
-const Featured = () => {
+export const Featured = () => {
   return <FeaturedPage {...defaultProps} />;
 };
-
-export { Featured };

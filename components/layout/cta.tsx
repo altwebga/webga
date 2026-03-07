@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Zap, ArrowUpRight } from "lucide-react";
 import { SectionContainer } from "../containers/section-container";
+import Image from "next/image";
 
 interface CallToActionProps {
   icon?: React.ElementType;
@@ -13,14 +14,14 @@ interface CallToActionProps {
 
 export function CallToAction({
   icon: Icon = Zap,
-  title = "Boost Your Productivity",
+  title = "Остались вопросы?",
   description = "Unlock your team's full potential with our cutting-edge collaboration tools. Streamline workflows, enhance communication, and achieve more together.",
-  buttonText = "Start Free Trial",
+  buttonText = "Перезвоните мне",
   features = [
-    "Real-time collaboration features",
-    "Advanced project management tools",
-    "Customizable workflows and integrations",
-    "24/7 priority customer support",
+    "Бесплатная консультация",
+    "Анализ старого сайта",
+    "Стратегия продвижения",
+    "Стек технологий",
   ],
 }: CallToActionProps) {
   return (
@@ -43,28 +44,14 @@ export function CallToAction({
                 <ArrowUpRight className="ml-2 size-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </Button>
             </CardContent>
-            <div className="flex-1 bg-muted p-8">
-              <ul className="space-y-4 text-sm">
-                {features.map((feature, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <svg
-                      className="size-5 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+            <div className="hidden md:flex flex-1 items-center justify-center p-8">
+              <Image
+                src="/img/question.png"
+                alt="CTA"
+                width={300}
+                height={300}
+                className="aspect-square object-contain"
+              />
             </div>
           </div>
         </Card>
