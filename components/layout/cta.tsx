@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Zap, ArrowUpRight } from "lucide-react";
+import { SectionContainer } from "../containers/section-container";
 
 interface CallToActionProps {
   icon?: React.ElementType;
@@ -23,8 +24,8 @@ export function CallToAction({
   ],
 }: CallToActionProps) {
   return (
-    <section>
-      <div className="container mx-auto px-4 md:px-12 py-20 border-l border-r border-b border-dashed">
+    <SectionContainer>
+      <div className="md:px-12">
         <Card className="overflow-hidden">
           <div className="flex flex-col md:flex-row">
             <CardContent className="flex-1 p-8">
@@ -68,6 +69,6 @@ export function CallToAction({
           </div>
         </Card>
       </div>
-    </section>
+    </SectionContainer>
   );
 }

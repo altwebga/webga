@@ -1,34 +1,79 @@
+import { ArrowRight, Rocket } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
+import { SectionContainer } from "../containers/section-container";
 
-const content = {
-  title: "Разработка и продвижение сайтов",
-  inCity: "в Горно-Алтайске",
-  description:
-    "Создаем сайты, которые продают. От лендингов до интернет-магазинов. Продвигаем в Яндекс и Google. Гарантия результата.",
-};
+interface HeroProps {
+  badgeText?: string;
+  title?: string;
+  subtitle?: string;
+  button1Text?: string;
+  button1Link?: string;
+  button2Text?: string;
+  button2Link?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+}
 
-export function Hero() {
+export const Hero: React.FC<HeroProps> = ({
+  badgeText = "трасформация бизнеса",
+  title = "Разработка и продвижение сайтов в Горно-Алтайске",
+  subtitle = "Мы создаем современные и эффективные сайты, которые помогут вашему бизнесу выделиться на рынке и привлечь больше клиентов.",
+  button1Text = "Заказать",
+  button1Link = "#",
+  button2Text = "Подробнее",
+  button2Link = "#",
+  imageSrc = "/img/no-image.svg",
+  imageAlt = "Hero illustration",
+}) => {
   return (
-    <section className="h-[calc(100vh-58px)]">
-      <div className="container mx-auto px-4 md:px-20 border-l border-r border-b border-dashed h-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-10">
-        <div className="md:w-1/2">
-          <h1 className="flex flex-col gap-2 text-3xl md:text-4xl ">
-            {content.title}
-            <span className="text-primary text-4xl md:text-7xl font-extrabold">
-              {content.inCity}
-            </span>
-          </h1>
-          <p className="text-muted-foreground mt-8">{content.description}</p>
+    <SectionContainer>
+      <div className="grid items-center gap-12 md:grid-cols-2">
+        {/* Left Section */}
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <Badge variant="outline" className="group flex items-center gap-2">
+            {badgeText}
+            <Rocket className="size-4 transition-transform group-hover:translate-x-1" />
+          </Badge>
+          <h1
+            className="my-6 text-pretty text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+          <p className="mb-8 max-w-xl text-lg text-muted-foreground">
+            {subtitle}
+          </p>
+          <div className="flex w-full flex-col gap-4 sm:flex-row">
+            <Link href={button1Link}>
+              <Button size="lg" className="w-full sm:w-48">
+                {button1Text}
+              </Button>
+            </Link>
+            <Link href={button2Link}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="group w-full sm:w-48"
+              >
+                {button2Text}
+                <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </div>
         </div>
-        <div className="md:w-1/2 flex justify-end">
+
+        {/* Right Section */}
+        <div className="aspect-square w-full overflow-hidden rounded-lg border border-muted/20 shadow-lg">
           <Image
-            src={"/img/no-image.svg"}
-            alt="text"
+            src={imageSrc}
+            alt={imageAlt}
             width={600}
             height={600}
+            className="size-full object-cover transition-transform duration-300 hover:scale-105"
           />
         </div>
       </div>
-    </section>
+    </SectionContainer>
   );
-}
+};

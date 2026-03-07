@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SectionContainer } from "../containers/section-container";
 
 interface Step {
   number: number;
@@ -43,21 +44,19 @@ const Steps = ({
   ],
 }: StepsProps) => {
   return (
-    <section>
-      <div className="container mx-auto px-4 py-20 border-l border-r border-b border-dashed">
-        <div className="mx-auto flex max-w-3xl flex-col justify-center gap-7 md:text-center">
-          <h2 className="text-2xl font-bold md:text-4xl">{title}</h2>
-          <p className="text-sm text-muted-foreground md:text-base">
-            {description}
-          </p>
-        </div>
-        <div className="mx-auto mt-14 flex max-w-5xl flex-col gap-4 lg:px-16">
-          {steps.map((step) => (
-            <StepItem key={step.number} {...step} totalSteps={steps.length} />
-          ))}
-        </div>
+    <SectionContainer>
+      <div className="mx-auto flex max-w-3xl flex-col justify-center gap-7 md:text-center">
+        <h2 className="text-2xl font-bold md:text-4xl">{title}</h2>
+        <p className="text-sm text-muted-foreground md:text-base">
+          {description}
+        </p>
       </div>
-    </section>
+      <div className="mx-auto mt-14 flex max-w-5xl flex-col gap-4 lg:px-16">
+        {steps.map((step) => (
+          <StepItem key={step.number} {...step} totalSteps={steps.length} />
+        ))}
+      </div>
+    </SectionContainer>
   );
 };
 
