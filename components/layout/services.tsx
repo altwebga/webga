@@ -118,7 +118,7 @@ function Services({
   }, [carouselApi]);
 
   return (
-    <SectionContainer>
+    <SectionContainer id="services">
       <div>
         <div className="mb-8 flex items-center justify-between md:flex-row md:items-end">
           <Heading as="h2" title={title} />

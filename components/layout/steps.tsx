@@ -45,7 +45,7 @@ const Steps = ({
   ],
 }: StepsProps) => {
   return (
-    <SectionContainer>
+    <SectionContainer id="process">
       <div className="mx-auto flex max-w-3xl flex-col justify-center gap-7 md:text-center">
         <Heading as="h2" title={title} className="text-center" />
         <p className="text-sm text-muted-foreground md:text-base">
@@ -74,7 +74,10 @@ function StepItem({
   totalSteps,
 }: StepItemProps) {
   return (
-    <div className="flex flex-col items-center justify-between min-[960px]:flex-row min-[960px]:gap-10">
+    <div
+      id="steps"
+      className="flex flex-col items-center justify-between min-[960px]:flex-row min-[960px]:gap-10"
+    >
       <div className="flex gap-4 min-[960px]:max-w-md">
         <div className="relative flex flex-col items-center justify-between gap-1">
           {showConnectors && (

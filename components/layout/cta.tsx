@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Zap, ArrowUpRight } from "lucide-react";
 import { SectionContainer } from "../containers/section-container";
-import Image from "next/image";
+import { ContactPopup } from "../shared/contact-popup";
 
 interface CallToActionProps {
   icon?: React.ElementType;
@@ -14,9 +14,8 @@ interface CallToActionProps {
 
 export function CallToAction({
   icon: Icon = Zap,
-  title = "Остались вопросы?",
-  description = "Unlock your team's full potential with our cutting-edge collaboration tools. Streamline workflows, enhance communication, and achieve more together.",
-  buttonText = "Перезвоните мне",
+  title = "Обсудим проект?",
+  description = "Оставьте заявку и мы свяжемся с вами в ближайшее время",
   features = [
     "Бесплатная консультация",
     "Анализ старого сайта",
@@ -25,10 +24,10 @@ export function CallToAction({
   ],
 }: CallToActionProps) {
   return (
-    <SectionContainer>
-      <div className="md:px-12">
+    <SectionContainer id="cta">
+      <div className="max-w-5xl mx-auto">
         <Card className="overflow-hidden">
-          <div className="flex flex-col md:flex-row">
+          <div className="flex flex-col items-center md:flex-row">
             <CardContent className="flex-1 p-8">
               <div className="mb-4 flex items-center gap-3">
                 <span className="flex size-12 items-center justify-center rounded-full border-2 border-primary/30 bg-primary/10">
@@ -39,19 +38,30 @@ export function CallToAction({
               <p className="mb-6 text-lg text-muted-foreground">
                 {description}
               </p>
-              <Button size="lg" className="group">
-                {buttonText}
-                <ArrowUpRight className="ml-2 size-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-              </Button>
+              <ContactPopup />
             </CardContent>
-            <div className="hidden md:flex flex-1 items-center justify-center p-8">
-              <Image
-                src="/img/question.png"
-                alt="CTA"
-                width={300}
-                height={300}
-                className="aspect-square object-contain"
-              />
+            <div className="hidden md:flex flex-1 p-8">
+              <ul className="space-y-4 text-sm">
+                {features.map((feature, index) => (
+                  <li key={index} className="flex items-center gap-2">
+                    <svg
+                      className="size-5 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </Card>

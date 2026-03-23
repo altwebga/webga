@@ -46,7 +46,7 @@ const defaultProps: EnhancedStatSectionProps = {
 
 function FeaturedPage({ title, description, stats }: EnhancedStatSectionProps) {
   return (
-    <SectionContainer>
+    <SectionContainer id="featured">
       <Heading as="h2" title={title} className="text-center mb-8" />
       <p className="mx-auto mb-12 max-w-3xl text-center text-lg text-muted-foreground md:mb-16 lg:mb-20">
         {description}

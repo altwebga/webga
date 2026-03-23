@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionContainer } from "../containers/section-container";
+import { ContactPopup } from "../shared/contact-popup";
 
 interface HeroProps {
   badgeText?: string;
@@ -23,8 +24,8 @@ export const Hero: React.FC<HeroProps> = ({
   subtitle = "Мы создаем современные и эффективные сайты, которые помогут вашему бизнесу выделиться на рынке и привлечь больше клиентов.",
   button1Text = "Заказать",
   button1Link = "#",
-  button2Text = "Подробнее",
-  button2Link = "#",
+  button2Text = "Услуги",
+  button2Link = "#services",
   imageSrc = "/img/hero_image.png",
   imageAlt = "Hero illustration",
 }) => {
@@ -48,11 +49,7 @@ export const Hero: React.FC<HeroProps> = ({
             {subtitle}
           </p>
           <div className="flex w-full flex-col gap-4 sm:flex-row">
-            <Link href={button1Link}>
-              <Button size="lg" className="w-full sm:w-48">
-                {button1Text}
-              </Button>
-            </Link>
+            <ContactPopup />
             <Link href={button2Link}>
               <Button
                 size="lg"
