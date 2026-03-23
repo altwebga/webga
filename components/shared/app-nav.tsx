@@ -5,22 +5,22 @@ import { Button } from "../ui/button";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-  SheetClose,
 } from "../ui/sheet";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useState } from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { useScrollspy } from "@/hooks/use-scrollspy";
+import { motion } from "motion/react";
 
 const navLinks = [
-  { title: "Главная", href: "/" },
-  { title: "Услуги", href: "#services" },
-  { title: "Как мы работаем", href: "#process" },
-  { title: "Контакты", href: "#cta" },
+  { title: "Главная", href: "/#hero", id: "hero" },
+  { title: "Услуги", href: "#services", id: "services" },
+  { title: "Как мы работаем", href: "#process", id: "process" },
+  { title: "Контакты", href: "#cta", id: "cta" },
 ];
 
 function isMobile() {
@@ -29,6 +29,8 @@ function isMobile() {
 
 function MobileNav() {
   const [open, setOpen] = useState(false);
+  const activeId = useScrollspy(navLinks.map((l) => l.id).filter(Boolean), 100);
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -39,17 +41,33 @@ function MobileNav() {
       <SheetContent side={"left"}>
         <SheetHeader>
           <SheetTitle>Меню</SheetTitle>
-          <SheetDescription>Sheet Description</SheetDescription>
         </SheetHeader>
-        <nav className="px-4">
+        <nav className="px-4 mt-8">
           <ul className="flex flex-col gap-6 list-none">
-            {navLinks.map((link) => (
-              <li key={link.title}>
-                <Link href={link.href} onClick={() => setOpen(false)}>
-                  {link.title}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeId === link.id || (activeId === "" && link.id === "hero");
+              return (
+                <li key={link.title}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      "text-lg transition-colors hover:text-primary relative",
+                      isActive ? "text-primary font-medium" : "text-muted-foreground"
+                    )}
+                  >
+                    {link.title}
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeMobileLink"
+                        className="absolute -bottom-2 left-0 w-full h-[2px] bg-primary"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </SheetContent>
@@ -58,14 +76,34 @@ function MobileNav() {
 }
 
 function DesktopNav() {
+  const activeId = useScrollspy(navLinks.map((l) => l.id).filter(Boolean), 100);
+
   return (
     <nav>
-      <ul className="flex gap-6 list-none">
-        {navLinks.map((link) => (
-          <li key={link.title}>
-            <Link href={link.href}>{link.title}</Link>
-          </li>
-        ))}
+      <ul className="flex gap-8 list-none">
+        {navLinks.map((link) => {
+          const isActive = activeId === link.id || (activeId === "" && link.id === "hero");
+          return (
+            <li key={link.title}>
+              <Link
+                href={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary relative py-2",
+                  isActive ? "text-primary" : "text-muted-foreground"
+                )}
+              >
+                {link.title}
+                {isActive && (
+                  <motion.span
+                    layoutId="activeDesktopLink"
+                    className="absolute bottom-0 left-0 w-full h-[2px] bg-primary"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
