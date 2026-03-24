@@ -52,7 +52,18 @@ function MobileNav() {
                 <li key={link.title}>
                   <Link
                     href={link.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      setOpen(false);
+                      if (link.href.includes('#')) {
+                        e.preventDefault();
+                        const id = link.href.split('#')[1];
+                        const el = document.getElementById(id);
+                        if (el) {
+                          el.scrollIntoView({ behavior: 'smooth' });
+                          window.history.pushState(null, "", link.href);
+                        }
+                      }
+                    }}
                     className={cn(
                       "text-lg transition-colors hover:text-primary relative",
                       isActive
@@ -96,6 +107,17 @@ function DesktopNav() {
             <li key={link.title}>
               <Link
                 href={link.href}
+                onClick={(e) => {
+                  if (link.href.includes('#')) {
+                    e.preventDefault();
+                    const id = link.href.split('#')[1];
+                    const el = document.getElementById(id);
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth' });
+                      window.history.pushState(null, "", link.href);
+                    }
+                  }
+                }}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary relative py-2",
                   isActive ? "text-primary" : "text-muted-foreground",

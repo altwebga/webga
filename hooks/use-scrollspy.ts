@@ -9,6 +9,14 @@ export function useScrollspy(ids: string[], offset: number = 0) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id);
+            
+            // Обновляем hash в URL без перезагрузки страницы (replaceState не засоряет историю)
+            if (entry.target.id) {
+              const hash = `#${entry.target.id}`;
+              if (window.location.hash !== hash) {
+                window.history.replaceState(null, "", hash);
+              }
+            }
           }
         });
       },
