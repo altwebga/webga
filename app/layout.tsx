@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { YandexMetrika } from "@/components/shared/yandex-metrika";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +18,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Разработка и продвижение сайтов в Горно-Алтайске | WebGA",
-  description: "Студия WebGA предлагает профессиональную разработку сайтов, SEO-продвижение, контекстную рекламу и SMM в Горно-Алтайске. Увеличьте продажи вашего бизнеса в интернете!",
+  description:
+    "Студия WebGA предлагает профессиональную разработку сайтов, SEO-продвижение, контекстную рекламу и SMM в Горно-Алтайске. Увеличьте продажи вашего бизнеса в интернете!",
 };
 
 export default function RootLayout({
@@ -40,6 +42,7 @@ export default function RootLayout({
           <main className="grow">{children}</main>
           <Footer />
         </ThemeProvider>
+        <YandexMetrika />
       </body>
     </html>
   );

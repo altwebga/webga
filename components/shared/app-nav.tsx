@@ -36,6 +36,7 @@ function MobileNav() {
       <SheetTrigger asChild>
         <Button variant="outline">
           <Menu />
+          <span className="ml-2">Меню</span>
         </Button>
       </SheetTrigger>
       <SheetContent side={"left"}>
@@ -45,7 +46,8 @@ function MobileNav() {
         <nav className="px-4 mt-8">
           <ul className="flex flex-col gap-6 list-none">
             {navLinks.map((link) => {
-              const isActive = activeId === link.id || (activeId === "" && link.id === "hero");
+              const isActive =
+                activeId === link.id || (activeId === "" && link.id === "hero");
               return (
                 <li key={link.title}>
                   <Link
@@ -53,7 +55,9 @@ function MobileNav() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       "text-lg transition-colors hover:text-primary relative",
-                      isActive ? "text-primary font-medium" : "text-muted-foreground"
+                      isActive
+                        ? "text-primary font-medium"
+                        : "text-muted-foreground",
                     )}
                   >
                     {link.title}
@@ -61,7 +65,11 @@ function MobileNav() {
                       <motion.span
                         layoutId="activeMobileLink"
                         className="absolute -bottom-2 left-0 w-full h-[2px] bg-primary"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30,
+                        }}
                       />
                     )}
                   </Link>
@@ -82,14 +90,15 @@ function DesktopNav() {
     <nav>
       <ul className="flex gap-8 list-none">
         {navLinks.map((link) => {
-          const isActive = activeId === link.id || (activeId === "" && link.id === "hero");
+          const isActive =
+            activeId === link.id || (activeId === "" && link.id === "hero");
           return (
             <li key={link.title}>
               <Link
                 href={link.href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary relative py-2",
-                  isActive ? "text-primary" : "text-muted-foreground"
+                  isActive ? "text-primary" : "text-muted-foreground",
                 )}
               >
                 {link.title}

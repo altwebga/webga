@@ -66,7 +66,7 @@ export function ContactPopup({
               rel="noopener noreferrer"
               className="flex items-center gap-2"
             >
-              <Image src={link.icon} alt={link.title} width={24} height={24} />
+              <Image src={link.icon} alt={link.title} width={28} height={28} />
               <DialogClose>{link.title}</DialogClose>
             </a>
           ))}
