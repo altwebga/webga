@@ -26,7 +26,7 @@ export function CallToAction({
 }: CallToActionProps) {
   return (
     <SectionContainer id="cta" className="scroll-mt-14 md:scroll-mt-20">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 30 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -58,9 +58,9 @@ export function CallToAction({
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-block"
+                  className="inline-block w-full"
                 >
-                  <ContactPopup />
+                  <ContactPopup buttonClassName="" />
                 </motion.div>
               </CardContent>
               <div className="hidden md:flex flex-1 p-8 lg:p-12 border-l border-border/50">

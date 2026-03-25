@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 interface SocialLinks {
   title: string;
@@ -37,20 +38,25 @@ export const socialLinks: SocialLinks[] = [
 interface ContactPopupProps {
   buttonText?: string;
   textLink?: string;
+  buttonClassName?: string;
 }
 
 export function ContactPopup({
   buttonText = "Начать проект",
   textLink = "Добрый день, пишу с сайта webga.ru, хочу заказать сайт",
+  buttonClassName,
 }: ContactPopupProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size={"lg"} className="group w-full sm:w-48 h-14">
+        <Button
+          size={"lg"}
+          className={cn("group w-full sm:w-48 h-14", buttonClassName)}
+        >
           {buttonText}
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="py-10 px-6">
         <DialogHeader>
           <DialogTitle>Начать проект</DialogTitle>
           <DialogDescription>
@@ -64,10 +70,18 @@ export function ContactPopup({
               href={`${link.url}?text=${encodeURIComponent(textLink)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2"
+              className="flex items-center gap-4 cursor-pointer"
             >
-              <Image src={link.icon} alt={link.title} width={28} height={28} />
-              <DialogClose>{link.title}</DialogClose>
+              <Image
+                src={link.icon}
+                alt={link.title}
+                width={28}
+                height={28}
+                loading="eager"
+              />
+              <DialogClose asChild>
+                <p className="text-lg">{link.title}</p>
+              </DialogClose>
             </a>
           ))}
         </div>

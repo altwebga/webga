@@ -328,7 +328,7 @@ function Services({
               {items.map((item) => (
                 <CarouselItem
                   key={item.id}
-                  className="pl-5 md:basis-1/2 lg:basis-1/3"
+                  className="pl-5 md:basis-1/2 lg:basis-1/4"
                 >
                   <motion.div variants={itemVariants} className="h-full">
                     <Dialog>
@@ -375,9 +375,7 @@ function Services({
                             {item.title}
                           </DialogTitle>
                           <DialogDescription asChild>
-                            <div className="pt-4 text-base text-foreground/90">
-                              {item.fullDescription}
-                            </div>
+                            <div className="pt-4">{item.fullDescription}</div>
                           </DialogDescription>
                         </DialogHeader>
                         <div className="mt-6 flex flex-wrap justify-end gap-3">
@@ -386,7 +384,7 @@ function Services({
                               key={link.title}
                               asChild
                               variant="outline"
-                              className="flex items-center gap-2"
+                              className="flex items-center gap-2  w-full md:w-auto min-w-32 h-12"
                             >
                               <a
                                 href={`${link.url}?text=${encodeURIComponent(`Здравствуйте! Меня интересует: ${item.title}`)}`}
