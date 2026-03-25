@@ -15,7 +15,7 @@ export function SectionContainer({
     <section
       id={id}
       className={cn(
-        "container mx-auto px-4 py-20 md:px-6 border-l border-r border-b border-dashed",
+        "container mx-auto px-4 py-10 md:py-20 md:px-6 border-l border-r border-b border-dashed",
         className,
       )}
     >

@@ -25,7 +25,7 @@ export function CallToAction({
   ],
 }: CallToActionProps) {
   return (
-    <SectionContainer id="cta" className="scroll-mt-20">
+    <SectionContainer id="cta" className="scroll-mt-14 md:scroll-mt-20">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 30 }}

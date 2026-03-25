@@ -65,7 +65,7 @@ const Steps = ({
   ],
 }: StepsProps) => {
   return (
-    <SectionContainer id="process" className="scroll-mt-20">
+    <SectionContainer id="process" className="scroll-mt-14 md:scroll-mt-20">
       <motion.div 
         className="mx-auto flex max-w-3xl flex-col justify-center gap-7 md:text-center"
         initial={{ opacity: 0, y: 20 }}

@@ -286,7 +286,7 @@ function Services({
   }, [carouselApi]);
 
   return (
-    <SectionContainer id="services" className="scroll-mt-20">
+    <SectionContainer id="services" className="scroll-mt-14 md:scroll-mt-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

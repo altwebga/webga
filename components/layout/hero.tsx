@@ -29,10 +29,13 @@ export const Hero: React.FC<HeroProps> = ({
   imageAlt = "Hero illustration",
 }) => {
   return (
-    <SectionContainer id="hero" className="bg-[url('/img/hero_bg.svg')] bg-cover bg-center bg-no-repeat scroll-mt-20">
+    <SectionContainer
+      id="hero"
+      className="bg-[url('/img/hero_bg.svg')] bg-cover bg-center bg-no-repeat scroll-mt-14 md:scroll-mt-20"
+    >
       <div className="grid items-center gap-12 md:grid-cols-2 md:px-12">
         {/* Left Section */}
-        <motion.div 
+        <motion.div
           className="flex flex-col items-center text-center lg:items-start lg:text-left"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,7 +71,7 @@ export const Hero: React.FC<HeroProps> = ({
         </motion.div>
 
         {/* Right Section */}
-        <motion.div 
+        <motion.div
           className="aspect-square w-full overflow-hidden rounded-lg"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -80,6 +83,7 @@ export const Hero: React.FC<HeroProps> = ({
             width={800}
             height={800}
             className="size-full object-contain drop-shadow-xl"
+            loading="eager"
           />
         </motion.div>
       </div>

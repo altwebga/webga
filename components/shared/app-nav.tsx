@@ -12,7 +12,7 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useState } from "react";
-import { useMediaQuery } from "@/hooks/use-media-query";
+
 import { useScrollspy } from "@/hooks/use-scrollspy";
 import { motion } from "motion/react";
 
@@ -23,9 +23,7 @@ const navLinks = [
   { title: "Контакты", href: "#cta", id: "cta" },
 ];
 
-function isMobile() {
-  return useMediaQuery("(max-width: 768px)");
-}
+
 
 function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -39,9 +37,9 @@ function MobileNav() {
           <span className="ml-2">Меню</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side={"left"}>
+      <SheetContent side={"left"} aria-describedby={undefined}>
         <SheetHeader>
-          <SheetTitle>Меню</SheetTitle>
+          <SheetTitle className="sr-only">Меню</SheetTitle>
         </SheetHeader>
         <nav className="px-4 mt-8">
           <ul className="flex flex-col gap-6 list-none">
@@ -57,11 +55,13 @@ function MobileNav() {
                       if (link.href.includes('#')) {
                         e.preventDefault();
                         const id = link.href.split('#')[1];
-                        const el = document.getElementById(id);
-                        if (el) {
-                          el.scrollIntoView({ behavior: 'smooth' });
-                          window.history.pushState(null, "", link.href);
-                        }
+                        setTimeout(() => {
+                          const el = document.getElementById(id);
+                          if (el) {
+                            el.scrollIntoView({ behavior: 'smooth' });
+                            window.history.pushState(null, "", link.href);
+                          }
+                        }, 300);
                       }
                     }}
                     className={cn(
@@ -141,5 +141,14 @@ function DesktopNav() {
 }
 
 export function AppNav() {
-  return isMobile() ? <MobileNav /> : <DesktopNav />;
+  return (
+    <>
+      <div className="md:hidden">
+        <MobileNav />
+      </div>
+      <div className="hidden md:block">
+        <DesktopNav />
+      </div>
+    </>
+  );
 }
