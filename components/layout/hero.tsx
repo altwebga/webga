@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({
               <Button
                 size="lg"
                 variant="outline"
-                className="group w-full sm:w-48"
+                className="group w-full sm:w-48 h-14"
               >
                 {button2Text}
                 <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />

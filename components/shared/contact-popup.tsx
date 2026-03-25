@@ -46,7 +46,7 @@ export function ContactPopup({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size={"lg"} className="group w-full sm:w-48">
+        <Button size={"lg"} className="group w-full sm:w-48 h-14">
           {buttonText}
         </Button>
       </DialogTrigger>
