@@ -16,14 +16,14 @@ import { useState } from "react";
 import { useScrollspy } from "@/hooks/use-scrollspy";
 import { motion } from "motion/react";
 
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
 const navLinks = [
-  { title: "Главная", href: "/#hero", id: "hero" },
-  { title: "Услуги", href: "#services", id: "services" },
-  { title: "Как мы работаем", href: "#process", id: "process" },
-  { title: "Контакты", href: "#cta", id: "cta" },
+  { title: "Главная", href: `${baseURL}/#hero`, id: "hero" },
+  { title: "Услуги", href: `${baseURL}/#services`, id: "services" },
+  { title: "Как мы работаем", href: `${baseURL}/#process`, id: "process" },
+  { title: "Контакты", href: `${baseURL}/#cta`, id: "cta" },
 ];
-
-
 
 function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -52,13 +52,13 @@ function MobileNav() {
                     href={link.href}
                     onClick={(e) => {
                       setOpen(false);
-                      if (link.href.includes('#')) {
+                      if (link.href.includes("#")) {
                         e.preventDefault();
-                        const id = link.href.split('#')[1];
+                        const id = link.href.split("#")[1];
                         setTimeout(() => {
                           const el = document.getElementById(id);
                           if (el) {
-                            el.scrollIntoView({ behavior: 'smooth' });
+                            el.scrollIntoView({ behavior: "smooth" });
                             window.history.pushState(null, "", link.href);
                           }
                         }, 300);
@@ -108,12 +108,12 @@ function DesktopNav() {
               <Link
                 href={link.href}
                 onClick={(e) => {
-                  if (link.href.includes('#')) {
+                  if (link.href.includes("#")) {
                     e.preventDefault();
-                    const id = link.href.split('#')[1];
+                    const id = link.href.split("#")[1];
                     const el = document.getElementById(id);
                     if (el) {
-                      el.scrollIntoView({ behavior: 'smooth' });
+                      el.scrollIntoView({ behavior: "smooth" });
                       window.history.pushState(null, "", link.href);
                     }
                   }
